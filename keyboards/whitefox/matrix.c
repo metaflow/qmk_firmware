@@ -26,7 +26,7 @@ static uint16_t debouncing_time = 0;
 void matrix_init(void)
 {
   print("matrix_init");
-    debug_matrix = true;
+//    debug_matrix = true;
     /* Column(sense) */
     palSetPadMode(GPIOD, 0,  PAL_MODE_INPUT_PULLDOWN);
     palSetPadMode(GPIOD, 1,  PAL_MODE_INPUT_PULLDOWN);
