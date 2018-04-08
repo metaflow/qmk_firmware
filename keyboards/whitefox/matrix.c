@@ -25,7 +25,8 @@ static uint16_t debouncing_time = 0;
 
 void matrix_init(void)
 {
-//debug_matrix = true;
+  print("matrix_init");
+    debug_matrix = true;
     /* Column(sense) */
     palSetPadMode(GPIOD, 0,  PAL_MODE_INPUT_PULLDOWN);
     palSetPadMode(GPIOD, 1,  PAL_MODE_INPUT_PULLDOWN);
@@ -55,6 +56,7 @@ void matrix_init(void)
 
 uint8_t matrix_scan(void)
 {
+  print("matrix_scan");
     for (int row = 0; row < MATRIX_ROWS; row++) {
         matrix_row_t data = 0;
 
