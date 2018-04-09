@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <string.h>
+#include "debug.h"
 #include "hal.h"
 #include "timer.h"
 #include "wait.h"
@@ -25,7 +26,7 @@ static uint16_t debouncing_time = 0;
 
 void matrix_init(void)
 {
-  print("matrix_init");
+//    debug_enable = true;
 //    debug_matrix = true;
     /* Column(sense) */
     palSetPadMode(GPIOD, 0,  PAL_MODE_INPUT_PULLDOWN);
@@ -56,7 +57,6 @@ void matrix_init(void)
 
 uint8_t matrix_scan(void)
 {
-  print("matrix_scan");
     for (int row = 0; row < MATRIX_ROWS; row++) {
         matrix_row_t data = 0;
 
