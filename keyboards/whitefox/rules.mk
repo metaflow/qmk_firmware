@@ -42,6 +42,7 @@ CUSTOM_MATRIX = yes # Custom matrix file
 BACKLIGHT_ENABLE = yes
 BACKLIGHT_DRIVER = custom
 VISUALIZER_ENABLE = yes
+TAP_DANCE_ENABLE = yes  # TD macro
 
 # project specific files
 SRC = matrix.c \
