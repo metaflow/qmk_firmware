@@ -18,8 +18,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB , KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,/**/KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
     KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,/**/KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_RSFT,
     KC_LCTL, KC_LALT, KC_LGUI, KC_LBRC, KC_LPRN,         /**/         KC_RPRN, KC_RBRC, KC_MINS, KC_EQL , _______,
-                                        _______, KC_DEL ,/**/KC_BSPC, KC_ENT,
-                               KC_SPC , TOP    , LEVEL1 ,/**/_______, TOP    , KC_SPC
+                                        KC_ENT , KC_DEL ,/**/KC_BSPC, KC_ENT,
+                               TOP    , KC_SPC , LEVEL1 ,/**/_______, KC_SPC , TOP
   ),
   [_GAMEPAD] = LAYOUT_5x6(
     _______, _______, _______, _______, _______, _______,/**/_______, _______, KC_UP,   _______, _______, _______,
@@ -34,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_CAPS, _______, _______, _______, _______, _______,/**/KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END, _______,
     _______, _______, _______, _______, _______, _______,/**/_______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, GAMEPAD,         /**/         _______, _______, _______, _______, _______,
-                                        _______, RESET  ,/**/_______, _______,
+                                        RESET,   _______,/**/_______, _______,
                                _______, _______, _______,/**/_______, _______, _______
   ),
   [_TOP] = LAYOUT_5x6(
