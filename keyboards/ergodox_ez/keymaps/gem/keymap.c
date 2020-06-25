@@ -28,9 +28,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_CAPS,         KC_A,        KC_S,          KC_D,    KC_F,    KC_G,                                        KC_H,    KC_J,    KC_K,    KC_L,     KC_SCLN,   KC_QUOT,
   KC_LSFT,         KC_Z,        KC_X,          KC_C,    KC_V,    KC_B,    KC_LBRC,               KC_RBRC,     KC_N,    KC_M,    KC_COMM, KC_DOT,   KC_SLSH,   KC_RSFT,
   KC_LCTL,         KC_LALT,     KC_LWIN,       KC_BSPC, KC_DEL,                                                        KC_LEFT, KC_DOWN, KC_UP,    KC_RIGHT,  TT(SYMB),
-                                                           ALT_T(KC_APP), KC_LGUI,               KC_HOME,     KC_END,
-                                                                          KC_HOME,               MO(MDIA),
-                                                        KC_SPC, MO(SYMB), KC_INS,                KC_PGUP,     KC_PGDN, KC_ENT
+                                                           ALT_T(KC_APP), KC_LGUI,               MO(MDIA),     KC_END,
+                                                                          KC_HOME,               KC_PGUP,
+                                                        KC_SPC, MO(SYMB), KC_INS,                KC_PGUP,     MO(SYMB), KC_ENT
 ),
 [GAME] = LAYOUT_ergodox_pretty(
   // left hand
@@ -39,9 +39,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LCTL,         KC_A,        KC_S,          KC_D,    KC_F,    KC_G,                                        KC_H,    KC_J,    KC_K,    KC_L,     KC_SCLN,   KC_QUOT,
   KC_LSFT,         KC_Z,        KC_X,          KC_C,    KC_V,    KC_B,    KC_N,                  KC_TRNS,     KC_N,    KC_M,    KC_COMM, KC_DOT,   KC_SLSH,   KC_RSFT,
   KC_LALT,         KC_H,        KC_J,          KC_BSPC, KC_SPC,                                                        KC_LEFT, KC_DOWN, KC_UP,    KC_RIGHT,  TT(SYMB),
-                                                                 KC_7,    KC_8,                  KC_HOME,     KC_END,
-                                                                          KC_9,                  MO(MDIA),
-                                                        KC_SPC, KC_ENT,   KC_0,                  MO(SYMB),    MO(MDIA), KC_ENT
+                                                                 KC_7,    KC_8,                  MO(MDIA),     KC_END,
+                                                                          KC_9,                  KC_PGUP,
+                                                        KC_SPC, KC_ENT,   KC_0,                  KC_PGUP,    MO(SYMB), KC_ENT
 ),
 /* Keymap 1: Symbol Layer
  *
@@ -62,7 +62,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 |Bright|Bright|      |       |      |Hue-  |Hue+  |
  *                                 |ness- |ness+ |------|       |------|      |      |
  *                                 |      |      |      |       |      |      |      |
- *                                 `--------------------'       `--------------------'
+ *                                 `--------------------'       `--------------------  
+ * 
+ * 
  */
 [SYMB] = LAYOUT_ergodox_pretty(
   // left hand
@@ -71,8 +73,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TRNS, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_LPRN,                       KC_DOWN, KC_LEFT,  KC_DOWN, KC_RIGHT, KC_PLUS, KC_TRNS,
   KC_TRNS, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, KC_TRNS,     KC_TRNS, KC_AMPR, KC_1,     KC_2,    KC_3,     KC_BSLS, KC_TRNS,
   RESET,   KC_TRNS, KC_TRNS, KC_TRNS, KC_LBRC,                                         KC_0,     KC_DOT,   KC_TRNS,  KC_EQL,  KC_TRNS,
-                                               RGB_MOD, DF(GAME),     RGB_TOG, RGB_SLD,
-                                                        DF(BASE),     KC_TRNS,
+                                               RGB_MOD, DF(BASE),     RGB_TOG, RGB_SLD,
+                                                        DF(GAME),     KC_TRNS,
                                       RGB_VAD, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, RGB_HUI
 ),
 /* Keymap 2: Media and mouse keys
