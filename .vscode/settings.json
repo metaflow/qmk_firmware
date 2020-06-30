@@ -16,7 +16,9 @@
         "*.hpp": "cpp",
         "xstddef": "c",
         "type_traits": "c",
-        "utility": "c"
+        "utility": "c",
+        "iosfwd": "c",
+        "xlocbuf": "c"
     },
     "[markdown]": {
         "editor.trimAutoWhitespace": false,
