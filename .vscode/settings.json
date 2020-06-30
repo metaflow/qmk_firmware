@@ -18,6 +18,8 @@
         "type_traits": "c",
         "utility": "c",
         "ranges": "c"
+        "iosfwd": "c",
+        "xlocbuf": "c"
     },
     "[markdown]": {
         "editor.trimAutoWhitespace": false,
