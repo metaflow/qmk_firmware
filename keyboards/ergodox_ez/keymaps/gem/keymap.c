@@ -35,16 +35,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // TODO: RBRC and RPRN doesn't seem to be very useful to be put on a separate but needed for other. Maybe put on symb?
 // TODO: add logger app for keyboard to record all events and analyse usage (should be possible to enable / disable to type passwords).
 // TODO: replace caps ctrl with something more useful.
+// TODO: add [] for to game layout (for Russian symbols).
+// TODO: use backspace location in base layout.
 [BASE] = LAYOUT_ergodox_pretty(
   // left hand
-  KC_ESC,          KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    KC_MINS,               KC_EQL,      KC_6,    KC_7,    KC_8,    KC_9,     KC_0,      KC_MINS,
-  KC_TAB,          KC_Q,        KC_W,          KC_E,    KC_R,    KC_T,    KC_LBRC,               KC_RBRC,     KC_Y,    KC_U,    KC_I,    KC_O,     KC_P,      KC_BSLS,
+  KC_ESC,          KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    KC_MINS,               KC_EQL,      KC_6,    KC_7,    KC_8,    KC_9,     KC_0,      KC_BSPC,
+  KC_TAB,          KC_Q,        KC_W,          KC_E,    KC_R,    KC_T,    KC_EQL,               KC_RBRC,     KC_Y,    KC_U,    KC_I,    KC_O,     KC_P,      KC_BSLS,
   KC_LCTL,         KC_A,        KC_S,          KC_D,    KC_F,    KC_G,                                        KC_H,    KC_J,    KC_K,    KC_L,     KC_SCLN,   KC_QUOT,
-  KC_LSFT,         KC_Z,        KC_X,          KC_C,    KC_V,    KC_B,    KC_LPRN,               KC_RPRN,     KC_N,    KC_M,    KC_COMM, KC_DOT,   KC_SLSH,   KC_RSFT,
-  KC_GRV,          KC_LGUI,     KC_LALT,       KC_BSPC, KC_DEL,                                                        KC_LEFT, KC_DOWN, KC_UP,    KC_RIGHT,  KC_RALT,
-                                                                 KC_HOME, KC_LGUI,               TT(MISC),     KC_END,
-                                                                           KC_ENT,              KC_PGUP,
-                                              LT(SYMB, KC_SPACE), KC_LCTL, KC_INS,              KC_PGDN,    KC_LCTL, LT(SYMB, KC_ENT)
+  KC_LSFT,         KC_Z,        KC_X,          KC_C,    KC_V,    KC_B,    KC_MINS,               KC_RPRN,     KC_N,    KC_M,    KC_COMM, KC_DOT,   KC_SLSH,   KC_RSFT,
+  KC_GRV,          KC_LGUI,     KC_LBRC,       KC_DEL,  KC_LALT,                                                      KC_LEFT, KC_DOWN, KC_UP,    KC_RIGHT,  KC_RALT,
+                                                                 KC_HOME, TT(MISC),              TT(MISC),     KC_END,
+                                                                           KC_INS,               KC_PGUP,
+                                              LT(SYMB, KC_SPACE), KC_LCTL, KC_LSFT,              KC_RSFT,    KC_LCTL, LT(SYMB, KC_ENT)
 ),
 [GAME] = LAYOUT_ergodox_pretty(
   // left hand
@@ -52,10 +54,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,          KC_Q,        KC_W,          KC_E,    KC_R,    KC_T,    KC_Y,                  KC_VOLU,     KC_Y,    KC_U,    KC_I,    KC_O,     KC_P,      KC_BSLS,
   KC_LCTL,         KC_A,        KC_S,          KC_D,    KC_F,    KC_G,                                        KC_H,    KC_J,    KC_K,    KC_L,     KC_SCLN,   KC_QUOT,
   KC_LSFT,         KC_Z,        KC_X,          KC_C,    KC_V,    KC_B,    KC_N,                  KC_VOLD,     KC_N,    KC_M,    KC_COMM, KC_DOT,   KC_SLSH,   KC_RSFT,
-  KC_LALT,         KC_H,        KC_J,          KC_K,    KC_SPC,                                                        KC_LEFT, KC_DOWN, KC_UP,    KC_RIGHT,  KC_LWIN,
+  KC_LALT,         KC_H,        KC_LBRC,       KC_RBRC,    KC_SPC,                                                        KC_LEFT, KC_DOWN, KC_UP,    KC_RIGHT,  KC_LWIN,
                                                                  KC_7,    KC_8,                  MO(MISC),     KC_DEL,
                                                                           KC_9,                  KC_PGUP,
-                                                        KC_SPC,  KC_U,    KC_0,                  KC_PGDN,    MO(SYMB), KC_ENT
+                                                      KC_SPC,  KC_LCTL, KC_LSFT,                 KC_PSCR,    MO(SYMB), LT(SYMB, KC_ENT)
 ),
 /* Keymap 1: Symbol Layer
  *
@@ -76,8 +78,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 |Bright|Bright|      |       |      |Hue-  |Hue+  |
  *                                 |ness- |ness+ |------|       |------|      |      |
  *                                 |      |      |      |       |      |      |      |
- *                                 `--------------------'       `-------------------- 
- * 
+ *                                 `--------------------'       `--------------------
+ *
  *  KC_TRNS,KC_EXLM,KC_AT,  KC_LCBR,KC_RCBR,KC_PIPE,KC_TRNS,
        KC_TRNS,KC_HASH,KC_DLR, KC_LPRN,KC_RPRN,KC_GRV,
        KC_TRNS,KC_PERC,KC_CIRC,KC_LBRC,KC_RBRC,KC_TILD,KC_TRNS,
@@ -85,13 +87,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [SYMB] = LAYOUT_ergodox_pretty(
   // left hand
   VRSN,    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _____,     _____, KC_F6,   KC_F7,    KC_F8,   KC_F9,    KC_F10,  KC_F11,
-  _____, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_EQL, _____,     _____, KC_UP,   KC_HOME,  KC_UP,   KC_END,     KC_ASTR, KC_F12,
-  _____, KC_HASH, KC_DLR,   KC_LPRN, KC_RPRN,  KC_MINS,                  LCTL(KC_LEFT), KC_LEFT,  KC_DOWN,        KC_RIGHT, LCTL(KC_RIGHT), _____,
-  _____, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_GRV , _____,          _____, KC_AMPR,      KC_BSPC,  LSFT(KC_DEL),  KC_DEL, _____, _____,
-  RESET,   _____, _____, _____, KC_LBRC,                                         KC_0,     KC_DOT,   _____,  KC_EQL,  _____,
-                                               RGB_MOD, DF(BASE),     RGB_TOG, RGB_SLD,
-                                                        DF(GAME),     _____,
-                                      RGB_VAD, XXXX, _____,           _____, XXXX, RGB_HUI
+  _____, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_EQL, _____,        _____, KC_HOME, LCTL(KC_LEFT), LCTL(KC_RIGHT),   KC_END,     _____, KC_F12,
+  _____, KC_HASH, KC_DLR,   KC_LPRN, KC_RPRN,  KC_MINS,                   KC_LEFT, KC_DOWN,  KC_UP,  KC_RIGHT, _____, _____,
+  XXXX, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_GRV , _____,       _____, KC_AMPR, KC_BSPC,  LSFT(KC_DEL),  KC_DEL, _____, _____,
+  RESET,   _____, _____, _____, XXXX,                                         _____,     _____,   _____,  _____,  _____,
+                                            _____, DF(BASE),     _____, _____,
+                                                  DF(GAME),      _____,
+                                      XXXX, _____, _____,        _____, _____, XXXX
 ),
 /* Keymap 2: Media and mouse keys
  *
@@ -116,11 +118,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [MISC] = LAYOUT_ergodox_pretty(
   // left hand
-  _____, _____, _____, _____, _____, _____, _____,        _____,   _____, _____, _____, _____, _____, _____,
-  _____, _____, _____, KC_MS_U, _____, _____, _____,      KC_VOLU, _____, KC_7, KC_8, KC_9, _____, _____,
-  KC_CAPS, _____, KC_MS_L, KC_MS_D, KC_MS_R, _____,                       KC_4, KC_5, KC_6, _____, _____, KC_MPLY,
-  _____, _____, _____, _____, _____, _____, _____,        KC_VOLD, _____, KC_1, KC_2, KC_3, _____, _____,
-  RESET, _____, _____, KC_BTN1, KC_BTN2,                                         KC_0, _____, _____, _____, _____,
+  _____, _____, _____, _____, _____, _____, _____,        _____,   _____, _____, _____, _____, _____, KC_BSPC,
+  _____, _____, _____, KC_MS_U, _____, _____, _____,      KC_VOLU, _____, KC_7, KC_8,   KC_9,  _____, _____,
+  KC_CAPS, _____, KC_MS_L, KC_MS_D, KC_MS_R, _____,                _____, KC_4, KC_5,   KC_6,  KC_MPLY, _____,
+  _____, _____, _____, _____, _____, _____, _____,        KC_VOLD, _____, KC_1, KC_2,   KC_3, _____, _____,
+  RESET, _____, _____, KC_BTN1, KC_BTN2,                                  KC_0, KC_DOT, _____, _____, _____,
 
                                                _____, _____,     XXXX, _____,
                                                         _____,     KC_VOLU,
@@ -169,11 +171,12 @@ void matrix_scan_user(void) {
 
 // Runs whenever there is a layer state change.
 layer_state_t layer_state_set_user(layer_state_t state) {
+  ergodox_led_all_set(1);
   ergodox_right_led_2_off();
   ergodox_right_led_3_off();
   uint8_t layer = get_highest_layer(state);
   switch (layer) {
-      case SYMB: 
+      case SYMB:
         ergodox_right_led_2_on();
         break;
       case MISC:
