@@ -19,7 +19,12 @@
         "utility": "c",
         "ranges": "c"
         "iosfwd": "c",
-        "xlocbuf": "c"
+        "xlocbuf": "c",
+        "chrono": "c",
+        "xhash": "c",
+        "xlocale": "c",
+        "xloctime": "c",
+        "xtree": "c"
     },
     "[markdown]": {
         "editor.trimAutoWhitespace": false,

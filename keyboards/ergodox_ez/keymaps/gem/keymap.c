@@ -18,11 +18,19 @@ enum custom_keycodes {
 };
 
 #define _____ KC_TRNS
-#define XXXX KC_TRNS
+#define XXXX[] KC_TRNS
 
 enum {
     TD_SCLN_Q,
     TD_L_M, 
+};
+
+struct multistate {
+  uint16_t trigger;
+  uint16_t codes[3];
+  uint8_t codes_length;
+  uint16_t last_time;
+  uint8_t pos;
 };
 
 qk_tap_dance_action_t tap_dance_actions[] = {
@@ -37,35 +45,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // TODO: use backspace location in base layout.
 [BASE] = LAYOUT_ergodox_pretty(
   // left hand
-  KC_ESC,          KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    KC_MINS,               KC_EQL,      KC_6,    KC_7,    KC_8,    KC_9,     KC_0,      KC_BSPC,
-  KC_TAB,          KC_Q,        KC_W,          KC_E,    KC_R,    KC_T,    KC_EQL,               KC_RBRC,     KC_Y,    KC_U,    KC_I,    KC_O,     KC_P,      KC_BSLS,
-  KC_LCTL,         KC_A,        KC_S,          KC_D,    KC_F,    KC_G,                                        KC_H,    KC_J,    KC_K,    KC_L,     KC_SCLN,   KC_QUOT,
-  KC_LSFT,         KC_Z,        KC_X,          KC_C,    KC_V,    KC_B,    KC_MINS,               KC_RPRN,     KC_N,    KC_M,    KC_COMM, KC_DOT,   KC_SLSH,   KC_RSFT,
-  KC_GRV,          KC_LGUI,     KC_LBRC,       KC_DEL,  KC_LALT,                                                      KC_LEFT, KC_DOWN, KC_UP,    KC_RIGHT,  KC_RALT,
-                                                                 KC_HOME, TT(MISC),              DF(GAME),     KC_END,
-                                                                           KC_INS,               DF(GAME),
-                                              LT(SYMB, KC_SPACE), KC_LCTL, KC_LSFT,              KC_RSFT,    KC_LCTL, LT(SYMB, KC_ENT)
+  KC_ESC,          KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    KC_MINS,               KC_EQL,   KC_6,    KC_7,    KC_8,    KC_9,     KC_0,      KC_BSPC,
+  KC_TAB,          KC_Q,        KC_W,          KC_E,    KC_R,    KC_T,    KC_EQL,                KC_PGUP,  KC_Y,    KC_U,    KC_I,    KC_O,     KC_P,      KC_BSLS,
+  KC_LCTL,         KC_A,        KC_S,          KC_D,    KC_F,    KC_G,                                     KC_H,    KC_J,    KC_K,    KC_L,     KC_SCLN,   KC_QUOT,
+  KC_LSFT,         KC_Z,        KC_X,          KC_C,    KC_V,    KC_B,    KC_MINS,               KC_PGDN,  KC_N,    KC_M,    KC_COMM, KC_DOT,   KC_SLSH,   KC_RSFT,
+  KC_GRV,          KC_LGUI,     KC_LBRC,       KC_DEL,  KC_LALT,                                                    KC_LEFT, KC_DOWN, KC_UP,    KC_RIGHT,  KC_RALT,
+                                                                 KC_HOME, TT(MISC),              DF(GAME),  KC_CAPS,
+                                                                           KC_INS,               KC_PSCR,
+                                              LT(SYMB, KC_SPACE), KC_LCTL, KC_LSFT,              KC_RSFT,    KC_RCTL, LT(SYMB, KC_ENT)
 ),
 [GAME] = LAYOUT_ergodox_pretty(
   // left hand
-  KC_ESC,          KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    KC_6,                  KC_PAUS,     KC_6,    KC_7,    KC_8,    KC_9,     KC_0,      KC_BSPC,
+  KC_ESC,          KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    KC_6,                  KC_PAUSE,     KC_6,    KC_7,    KC_8,    KC_9,     KC_0,      KC_BSPC,
   KC_TAB,          KC_Q,        KC_W,          KC_E,    KC_R,    KC_T,    KC_Y,                  KC_VOLU,     KC_Y,    KC_U,    KC_I,    KC_O,     KC_P,      KC_BSLS,
   KC_LCTL,         KC_A,        KC_S,          KC_D,    KC_F,    KC_G,                                        KC_H,    KC_J,    KC_K,    KC_L,     KC_SCLN,   KC_QUOT,
   KC_LSFT,         KC_Z,        KC_X,          KC_C,    KC_V,    KC_B,    KC_N,                  KC_VOLD,     KC_N,    KC_M,    KC_COMM, KC_DOT,   KC_SLSH,   KC_RSFT,
   KC_LALT,         KC_H,        KC_LBRC,       KC_RBRC,    KC_SPC,                                                        KC_LEFT, KC_DOWN, KC_UP,    KC_RIGHT,  KC_LWIN,
-                                                                 KC_7,    KC_8,                  DF(SC2),     KC_END,
-                                                                          KC_9,                  DF(SC2),
-                                                      KC_SPC,  KC_LCTL, KC_LSFT,                 KC_PSCR,    MO(SYMB), KC_ENT
+                                                                 KC_7,    KC_8,                  DF(SC2),     KC_MS_BTN2,
+                                                                          KC_9,                  KC_PSCR,
+                                                           KC_SPC,  KC_J, KC_L,                  KC_MS_BTN1,  MO(SYMB), KC_ENT
 ),
 [SC2] = LAYOUT_ergodox_pretty(
   // left hand
   KC_ESC,          KC_1,        MK_28,         MK_39,   MK_40,    KC_5,    KC_6,                  KC_PAUS,     KC_6,    KC_7,    KC_8,    KC_9,     KC_0,      KC_BSPC,
   KC_TAB,          KC_Q,        KC_W,          KC_E,    KC_R,    KC_T,    KC_Y,                  KC_VOLU,     KC_Y,    KC_U,    KC_I,    KC_O,     KC_P,      KC_BSLS,
-  TD(TD_SCLN_Q),   KC_A,        KC_S,          KC_D,    KC_F,    KC_G,                                        KC_H,    KC_J,    KC_K,    KC_L,     KC_SCLN,   KC_QUOT,
+  KC_SCLN,         KC_A,        KC_S,          KC_D,    KC_F,    KC_G,                                        KC_H,    KC_J,    KC_K,    KC_L,     KC_SCLN,   KC_QUOT,
   KC_LSFT,         KC_Z,        KC_X,          KC_C,    KC_V,    KC_B,    KC_N,                  KC_VOLD,     KC_N,    KC_M,    KC_COMM, KC_DOT,   KC_SLSH,   KC_RSFT,
   KC_LALT,         KC_H,        KC_J,          KC_K,    TD(TD_L_M),                                                    KC_LEFT, KC_DOWN, KC_UP,    KC_RIGHT,  KC_LWIN,
                                                                   KC_F1,  KC_F2,                  DF(BASE),     KC_END,
-                                                                          KC_F3,                  KC_PAUS,
+                                                                          KC_F3,                  KC_F12,
                                                       KC_SPC,  KC_LCTL, KC_LSFT,                  KC_PSCR,    MO(SYMB), KC_ENT
 ),
 [SYMB] = LAYOUT_ergodox_pretty(
@@ -73,11 +81,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   VRSN,    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _____,     _____, KC_F6,   KC_F7,    KC_F8,   KC_F9,    KC_F10,  KC_F11,
   _____, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_EQL, _____,        KC_PGUP, KC_HOME, LCTL(KC_LEFT), LCTL(KC_RIGHT),   KC_END,     _____, KC_F12,
   _____, KC_HASH, KC_DLR,   KC_LPRN, KC_RPRN,  KC_MINS,                     KC_LEFT, KC_DOWN,  KC_UP,  KC_RIGHT, _____, _____,
-  XXXX, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_GRV , _____,        KC_PGDN, KC_AMPR, KC_BSPC,  LSFT(KC_DEL),  KC_DEL, _____, _____,
-  _____,   _____, _____, _____, XXXX,                                         _____,     _____,   _____,  _____,  _____,
+  _____, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_GRV , _____,        KC_PGDN, KC_AMPR, KC_BSPC,  LSFT(KC_DEL),  KC_DEL, _____, _____,
+  _____,   _____, _____, _____, _____,                                         _____,     _____,   _____,  _____,  _____,
                                           _____, DF(BASE),     _____, _____,
                                                  DF(GAME),      _____,
-                                      XXXX, _____, _____,        _____, _____, XXXX
+                                      _____, _____, _____,        _____, _____, _____
 ),
 /* Keymap 2: Media and mouse keys
  *
@@ -103,54 +111,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [MISC] = LAYOUT_ergodox_pretty(
   // left hand
   _____, _____, _____, _____, _____, _____, _____,        _____,   _____, _____, _____, _____, _____, KC_BSPC,
-  _____, _____, _____, KC_MS_U, _____, _____, _____,      KC_VOLU, _____, KC_7, KC_8,   KC_9,  _____, _____,
+  _____, _____,   _____,   KC_MS_U, _____,   _____, KC_VOLU,      KC_VOLU, _____, KC_7, KC_8,   KC_9,  _____, _____,
   KC_CAPS, _____, KC_MS_L, KC_MS_D, KC_MS_R, _____,                _____, KC_4, KC_5,   KC_6,  KC_MPLY, _____,
-  _____, _____, _____, _____, _____, _____, _____,        KC_VOLD, _____, KC_1, KC_2,   KC_3, _____, _____,
+  _____, _____, _____, _____, _____, _____, KC_VOLD,        KC_VOLD, _____, KC_1, KC_2,   KC_3, _____, _____,
   RESET, _____, _____, KC_BTN1, KC_BTN2,                                  KC_0, KC_DOT, _____, _____, _____,
 
-                                               _____, _____,     XXXX, _____,
-                                                        _____,     KC_VOLU,
-                                      _____, _____, _____,     KC_VOLD, _____, _____
+                                               _____, _____,     _____, _____,
+                                                        _____,     _____,
+                                      _____, _____, _____,     _____, _____, _____
 ),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (!record->event.pressed) return true;
-  static uint16_t mk40 = 0;
-  static uint16_t mk39 = 0;
-  static uint16_t mk28 = 0;
+  static struct multistate taps[] = {
+    { MK_40, {KC_4, KC_0, KC_Q}, 3},
+    { MK_39, {KC_3, KC_9, KC_Q}, 3},
+    { MK_28, {KC_2, KC_8, KC_Q}, 3}
+  };
+  for (int i = 0; i < sizeof(taps) / sizeof(taps[0]); i++) {
+    if (keycode != taps[i].trigger) continue;
+    if (TIMER_DIFF_16(record->event.time, taps[i].last_time) < 500) {
+      taps[i].pos = (taps[i].pos + 1) % taps[i].codes_length;
+    } else {
+      taps[i].pos = 0;
+    }
+    taps[i].last_time = record->event.time;
+    tap_code(taps[i].codes[taps[i].pos]);
+    return true;
+  }
   switch (keycode) {
     case VRSN:
       if (!record->event.pressed) return true;
       SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
       return false;
-    case MK_40:      
-      if (TIMER_DIFF_16(record->event.time, mk40) < 500) {
-        tap_code(KC_0);
-        mk40 = 0;
-      } else {
-        mk40 = record->event.time;
-        tap_code(KC_4);
-      }
-      break;
-    case MK_39:      
-      if (TIMER_DIFF_16(record->event.time, mk39) < 500) {
-        tap_code(KC_9);
-        mk39 = 0;
-      } else {
-        mk39 = record->event.time;
-        tap_code(KC_3);
-      }
-      break;
-    case MK_28:      
-      if (TIMER_DIFF_16(record->event.time, mk28) < 500) {
-        tap_code(KC_8);
-        mk28 = 0;
-      } else {
-        mk28 = record->event.time;
-        tap_code(KC_2);
-      }
-      break;
   }
   return true;
 }
