@@ -18,7 +18,7 @@ enum custom_keycodes {
 };
 
 #define _____ KC_TRNS
-#define XXXX[] KC_TRNS
+#define XXXX KC_TRNS
 
 enum {
     TD_SCLN_Q,
