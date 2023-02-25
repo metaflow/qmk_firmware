@@ -25,6 +25,10 @@ enum layers{
     WIN_FN
 };
 
+enum custom_keycodes {
+  EMAIL = SAFE_RANGE,
+};
+
 #define KC_TASK LGUI(KC_TAB)
 #define KC_FLXP LGUI(KC_E)
 
@@ -39,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [MAC_FN] = LAYOUT_tkl_f13_ansi(
         _______,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,     RGB_TOG,  _______,  _______,  RGB_TOG,
-        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
+        _______,  _______,  EMAIL,    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
         RGB_TOG,  RGB_MOD,  RGB_VAI,  RGB_HUI,  RGB_SAI,  RGB_SPI,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
         _______,  RGB_RMOD, RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  _______,  _______,  _______,  _______,  _______,  _______,              _______,
         _______,            _______,  _______,  _______,  _______,  _______,  NK_TOGG,  _______,  _______,  _______,  _______,              _______,            _______,
@@ -57,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [WIN_FN] = LAYOUT_tkl_f13_ansi(
         QK_BOOT,  KC_BRID,  KC_BRIU,  KC_TASK,  KC_FLXP,  RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,    RGB_TOG,  _______,  _______,  RGB_TOG,
-        _______,  _______,  _______,S(A(KC_3)),S(A(KC_4)),S(A(KC_5)),_______, _______,  _______,  KC_END,   _______,  _______,  _______,    _______,  _______,  _______,  _______,
+        _______,  _______,  EMAIL,    S(A(KC_3)),S(A(KC_4)),S(A(KC_5)),_______, _______,  _______,  KC_END,   _______,  _______,  _______,    _______,  _______,  _______,  _______,
 
         _______,  RGB_MOD,  RGB_VAI,  RGB_HUI,  RGB_SAI,  RGB_SPI,  KC_HOME,  _______,  _______,  KC_END,   _______,  _______,  _______,    _______,  _______,  _______,  _______,
 
@@ -74,3 +78,14 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [WIN_FN]   = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI)},
 };
 #endif // ENCODER_MAP_ENABLE
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if (!record->event.pressed) return true;
+  switch (keycode) {
+    case EMAIL:
+      if (!record->event.pressed) return true;
+      SEND_STRING ("goncharov.mikhail@gmail.com");
+      return false;
+  }
+  return true;
+}
